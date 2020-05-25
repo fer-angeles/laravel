@@ -33,10 +33,15 @@ class PostJob implements ShouldQueue
      */
     public function handle()
     {
-	    Log::info( $this->url );
-	    $response = Http::post($this->url);
 	    try
 	    {
+		    $response = Http::post($this->url,[
+			    'post_name'     => 'Steve',
+			    'description'   => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus ducimus, facere id labore officia sint!',
+		    ]);
+
+		    Log::info( $this->url );
+
 		    if ( $response->failed() || $response->clientError() || $response->serverError())
 		    {
 		    	$message = "Http: failed - " .

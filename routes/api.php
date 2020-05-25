@@ -18,9 +18,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-
-Route::middleware('api')->post('/fake/post', function () {
-
-	return response()->json(true,200);
-
-});
+/**
+ * URL Fake Post
+ */
+Route::middleware('api')->post('/fake/post', 'FakePost@fake_post');
